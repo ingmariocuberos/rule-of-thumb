@@ -26,7 +26,6 @@
   max-width: 300px;
   max-height: 300px;
   margin-left: 1rem;
-  border: 1px solid #999;
   padding: 0;
 }
 
@@ -37,11 +36,41 @@
   font-size: 35px;
   color: $white;
   top: 32%;
-  left: 13%;
+  left: 11%;
 }
 
 .famous-img {
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+.main__button-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 30%;
+  left: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.main__thums-up {
+  background-color: $green-positive;
+}
+
+.main__thums-down {
+  background-color: $yellow-negative;
+}
+
+.main__description {
+  width: 90%;
+  position: absolute;
+  // font-family: "Mukta Malar", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: $white;
+  top: 47%;
+  left: 11%;
+  line-height: 17px;
 }
