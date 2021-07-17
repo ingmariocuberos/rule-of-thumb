@@ -1,0 +1,27 @@
+.main__title-previous-rulings {
+  font-family: "Mukta Malar", sans-serif;
+  font-weight: 400;
+}
+
+.main_ruling-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  transform: translate(0, 0);
+  transition: transform 0.5s ease-in;
+
+  &:focus {
+    cursor: grab !important;
+  }
+}
+
+.main__previous-rulings-item {
+  background-color: $white;
+  height: 80vw;
+  width: 80vw;
+  max-width: 300px;
+  max-height: 300px;
+  margin-left: 1rem;
+  border: 1px solid #999;
+}

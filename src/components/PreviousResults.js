@@ -1,16 +1,49 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import RulingItems from './RulingItems'
+import { UserContext } from './UserContext'
 
 export const PreviousResults = () => {
 
+    const {data} = useContext(UserContext);
 
-    
-    fetch('./assets/data.json')
-        .then(res => res.json())
-        .then(data => )
+    const [movement, setMovement] = useState({
+        startPosition:0,
+        traslatePosition:0,
+        endPosition:0,
+        divWeight: 290
+    })
+
     return (
         <>
             <main role="main">
-                
+
+                <h2 className="main__title-previous-rulings">Previous Rulings</h2>
+
+                <div className="main_ruling-container">
+
+                {
+                    data.map(person=>{
+                        const {name, description, category, picture, lastUpdated, votes} = person;
+
+                        return (
+                            <RulingItems
+                                key={name}
+                                name={name}
+                                description={description}
+                                category={category}
+                                picture={picture}
+                                lastUpdated={lastUpdated}
+                                votes={votes}
+                                dataLength={data.length}
+                                movement={movement}
+                                setMovement={setMovement}                                
+                                />
+                            )                        
+                        }                        
+                    )
+                }
+
+                </div>
 
             </main>
         </>
