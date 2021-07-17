@@ -18,10 +18,30 @@
 
 .main__previous-rulings-item {
   background-color: $white;
+  position: relative;
+  display: flex;
+  justify-content: center;
   height: 80vw;
   width: 80vw;
   max-width: 300px;
   max-height: 300px;
   margin-left: 1rem;
   border: 1px solid #999;
+  padding: 0;
+}
+
+.main_name-of-famous {
+  position: absolute;
+  font-family: "Mukta Malar", sans-serif;
+  font-weight: 600;
+  font-size: 35px;
+  color: $white;
+  top: 32%;
+  left: 13%;
+}
+
+.famous-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }

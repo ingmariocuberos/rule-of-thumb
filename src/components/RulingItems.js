@@ -81,12 +81,12 @@ const RulingItems = ({
                 onTouchEnd={ handleTouchEnd }
                 >
                     <RullingItemDesign 
-                        name
-                        description
-                        category
-                        picture
-                        lastUpdated
-                        votes
+                        name={name}
+                        description={description}
+                        category={category}
+                        picture={picture}
+                        lastUpdated={lastUpdated}
+                        votes={votes}
                     />
             </div>
             
