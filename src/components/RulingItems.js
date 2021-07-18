@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import 'firebase/firestore';
-import { useFirebaseApp } from 'reactfire';
 import PropTypes from 'prop-types'
 import { RullingItemDesign } from './RullingItemDesign';
 
@@ -37,8 +36,6 @@ const RulingItems = ({
             });           
             
         }
-
-        const itemContainer = document.getElementById("main_ruling-container");
 
         useEffect(() => {
 

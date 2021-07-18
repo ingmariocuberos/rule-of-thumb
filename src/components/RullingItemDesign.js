@@ -1,4 +1,7 @@
 import React, { useEffect, useRef } from 'react'
+import { CurrentVote } from './CurrentVote';
+import { handleDate } from "./helpers/handleDates";
+import Votes from './Votes';
 
 export const RullingItemDesign = ({
     name,
@@ -8,15 +11,9 @@ export const RullingItemDesign = ({
     lastUpdated,
     votes
 }) => {
-
-    const nowDate = new Date()
-    const fecha = new Date(lastUpdated);
-    const diferencia = nowDate - fecha;
-
     
-
-    console.log(diferencia);
-   
+    const lastUpdateConverted = handleDate(lastUpdated);
+  
     return (
         <div 
             className="main__ruling-item-design"
@@ -29,7 +26,7 @@ export const RullingItemDesign = ({
                         :
                         name
                         }
-                        </h2>
+                    </h2>
                     
                     <div className={ true ? "main__button-container main__thums-up" : "main__button-container main__thums-down"}>
                         {
@@ -52,9 +49,21 @@ export const RullingItemDesign = ({
                         description
                         }
                     </div>
+                    <div className="main__update-and-category">
+                        {
+                            lastUpdateConverted + " ago in " + category.charAt(0).toUpperCase() + category.slice(1)
+                        }
+                    </div>
+
+                    <CurrentVote />
+                    
+
+                    <Votes votes={ votes } />
+                    
+
                 </div>
                 
-                <img src={ `./assets/img/${ picture }` } className="famous-img" alt={ name }/>
+            <img src={ `./assets/img/${ picture }` } className="famous-img" alt={ name }/>
 
         </div>
     )

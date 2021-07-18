@@ -15,7 +15,6 @@ export const PreviousResults = () => {
 
     const mainRuling = document.querySelector(".main_ruling-container");
 
-
     return (
         <>
             <main role="main">
@@ -27,7 +26,7 @@ export const PreviousResults = () => {
                 {
                     data.map(person=>{
                         
-                        const {name, description, category, picture, lastUpdated, votes} = person;
+                        const {name, description, category, picture, lastUpdated, votes} = person;   
 
                         return (
                             <RulingItems
