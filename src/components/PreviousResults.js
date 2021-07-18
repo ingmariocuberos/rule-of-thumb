@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import RulingItems from './RulingItems'
 import { UserContext } from './UserContext'
 
@@ -13,6 +13,9 @@ export const PreviousResults = () => {
         divWeight: 290
     })
 
+    const mainRuling = document.querySelector(".main_ruling-container");
+
+
     return (
         <>
             <main role="main">
@@ -23,11 +26,13 @@ export const PreviousResults = () => {
 
                 {
                     data.map(person=>{
+                        
                         const {name, description, category, picture, lastUpdated, votes} = person;
 
                         return (
                             <RulingItems
                                 key={name}
+                                mainRuling={mainRuling}
                                 name={name}
                                 description={description}
                                 category={category}

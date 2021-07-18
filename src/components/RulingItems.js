@@ -1,8 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
+import 'firebase/firestore';
+import { useFirebaseApp } from 'reactfire';
 import PropTypes from 'prop-types'
 import { RullingItemDesign } from './RullingItemDesign';
 
+
 const RulingItems = ({
+    mainRuling,
     name, 
     description, 
     category, 
@@ -12,7 +16,7 @@ const RulingItems = ({
     dataLength,
     movement,
     setMovement
-    }) => {           
+    }) => {
 
         const {startPosition,traslatePosition,endPosition} = movement;
         const refDivItemWidth = useRef(290)
@@ -34,7 +38,7 @@ const RulingItems = ({
             
         }
 
-        const itemContainer = document.querySelector(".main_ruling-container");
+        const itemContainer = document.getElementById("main_ruling-container");
 
         useEffect(() => {
 
@@ -66,9 +70,9 @@ const RulingItems = ({
             }
         }, [endPosition])
 
-        useEffect(() => {                     
-
-            itemContainer.style.transform = `translate(${traslatePosition}px, 0)`;
+        useEffect(() => {
+            mainRuling.style.transform = `translate(${traslatePosition}px, 0)`;
+            
         }, [traslatePosition])
         
     
