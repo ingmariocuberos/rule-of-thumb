@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Despliegue de la app
+
+https://prueba-ui-mario-cuberos.netlify.app
+
 ## Flujo del Código
 •	La aplicación inicia con la creación del componente inicial index.js donde se ejecuta el componente RuleOfThumb.js.
 
