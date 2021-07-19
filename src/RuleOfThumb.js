@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AppRouter } from './components/routers/AppRouter'
 import "firebase/auth";
 import "firebase/firestore";

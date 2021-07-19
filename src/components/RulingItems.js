@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import 'firebase/firestore';
 import PropTypes from 'prop-types'
 import { RullingItemDesign } from './RullingItemDesign';

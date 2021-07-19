@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useRef } from 'react';
 
 const Votes = ( { votes, view } ) => {
 
@@ -9,11 +8,6 @@ const Votes = ( { votes, view } ) => {
 
     const refPositive = useRef(null);
     const refNegative = useRef(null);
-
-    const [widthOpinion, setWidthOpinion] = useState({
-        positive: 0,
-        negative: 0
-    })
 
     
 
@@ -29,7 +23,7 @@ const Votes = ( { votes, view } ) => {
 
     return (
         <>
-            <div className="main__container-votes">
+            <div id={`main__container-votes-down-${view}`} className="main__container-votes">
                 
                 <div className="main_positive" ref={ refPositive } >
                     <div className="main__positive-percentaje">   

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { CurrentVote } from './CurrentVote';
 import { handleDate } from "./helpers/handleDates";
 import Votes from './Votes';
@@ -87,7 +87,7 @@ export const RullingItemDesign = ({
                     view={view} />
                     
                 
-            <img src={ `./assets/img/${ picture }` } id={`famous-img-${view}`} className="famous-img" alt={ name }/>
+            <img src={ `./assets/img/${ picture }${view==="list"? ".png":".jpg"}` } id={`famous-img-${view}`} className="famous-img" alt={ name }/>
 
         </div>
     )

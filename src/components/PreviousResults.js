@@ -8,7 +8,7 @@ export const PreviousResults = () => {
 
     const [weightValue, setWeightValue] = useState(300);
 
-    const [view, setView] = useState("list")
+    const [view, setView] = useState("grid")
 
     const handleChange = ({target}) =>{
         setView(target.value)
@@ -40,8 +40,8 @@ export const PreviousResults = () => {
                         name="select"
                         onChange={ handleChange }
                         >
-                            <option className="option" value="list" defaultValue>List</option>
-                            <option className="option" value="grid">Grid</option>
+                            <option className="option" value="grid" defaultValue>Grid</option>
+                            <option className="option" value="list">List</option>
                     </select>
 
                 </div>

@@ -20,7 +20,7 @@ export const AppScreen = () => {
 
                     <AsideAddAnyoneElse />
                     
-                    <hr role="separator"/>
+                    <hr />
 
                     <Footer />
                     
