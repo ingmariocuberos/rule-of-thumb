@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
-const Votes = ( { votes } ) => {
+const Votes = ( { votes, view } ) => {
 
     const positivePercentaje = (((votes.positive / (votes.positive + votes.negative))*100).toFixed(1))*1;
     

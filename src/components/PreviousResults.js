@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import RulingItems from './RulingItems'
 import { UserContext } from './UserContext'
 
@@ -6,12 +6,26 @@ export const PreviousResults = () => {
 
     const {data} = useContext(UserContext);
 
+    const [weightValue, setWeightValue] = useState(300);
+
+    const [view, setView] = useState("list")
+
+    const handleChange = ({target}) =>{
+        setView(target.value)
+    }
+
     const [movement, setMovement] = useState({
         startPosition:0,
         traslatePosition:0,
         endPosition:0,
         divWeight: 290
-    })
+    });
+
+    const rulingContainer = useRef(null)
+
+    useEffect(() => {
+        setWeightValue(rulingContainer.current.clientWidth)
+    }, [rulingContainer])
 
     const mainRuling = document.querySelector(".main_ruling-container");
 
@@ -21,14 +35,22 @@ export const PreviousResults = () => {
 
                 <div className="main_container-previous-rulings">                   
                     <h2 className="main__title-previous-rulings">Previous Rulings</h2>
-                    <select className="main__select custom-select" name="select">
-                        <option className="option" value="list" selected>List</option>
-                        <option className="option" value="grid">Grid</option>
+                    <select 
+                        className="main__select custom-select" 
+                        name="select"
+                        onChange={ handleChange }
+                        >
+                            <option className="option" value="list" defaultValue>List</option>
+                            <option className="option" value="grid">Grid</option>
                     </select>
 
                 </div>
 
-                <div className="main_ruling-container">
+                <div 
+                    id={`main_ruling-container-${view}`}
+                    className="main_ruling-container"
+                    ref={rulingContainer}
+                    >
 
                 {
                     data.map(person=>{
@@ -40,6 +62,7 @@ export const PreviousResults = () => {
                                 key={name}
                                 id={id}
                                 idFire={ide}
+                                weightValue={weightValue}
                                 mainRuling={mainRuling}
                                 name={name}
                                 description={description}
@@ -49,7 +72,8 @@ export const PreviousResults = () => {
                                 votes={votes}
                                 dataLength={data.length}
                                 movement={movement}
-                                setMovement={setMovement}                                
+                                setMovement={setMovement}
+                                view={view}                               
                                 />
                             )                        
                         }                        

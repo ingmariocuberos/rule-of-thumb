@@ -8,6 +8,7 @@ const RulingItems = ({
     id,
     idFire,
     mainRuling,
+    weightValue,
     name, 
     description, 
     category, 
@@ -16,7 +17,8 @@ const RulingItems = ({
     votes,
     dataLength,
     movement,
-    setMovement
+    setMovement,
+    view
     }) => {
 
         const {startPosition,traslatePosition,endPosition} = movement;
@@ -41,49 +43,53 @@ const RulingItems = ({
 
         useEffect(() => {
 
-            const realMovement = (traslatePosition + (endPosition - startPosition));
+            if(weightValue < 765){
+                const realMovement = (traslatePosition + (endPosition - startPosition));
 
-            if (realMovement > 0){
-                setMovement({
-                    ...movement,
-                    traslatePosition: 0
-                })
-            } else if(-realMovement > ((dataLength-1)*(refDivItemWidth.current.clientWidth + 12))){
-                setMovement({
-                    ...movement,
-                    traslatePosition: -(dataLength-1)*(refDivItemWidth.current.clientWidth + 12)
-                })
+                if (realMovement > 0){
+                    setMovement({
+                        ...movement,
+                        traslatePosition: 0
+                    })
+                } else if(-realMovement > ((dataLength-1)*(refDivItemWidth.current.clientWidth + 12))){
+                    setMovement({
+                        ...movement,
+                        traslatePosition: -(dataLength-1)*(refDivItemWidth.current.clientWidth + 12)
+                    })
+                }
+                else if ((endPosition - startPosition) < 0){
+                    setMovement({
+                        ...movement,
+                        traslatePosition: (traslatePosition - refDivItemWidth.current.clientWidth - 12)
+                    })
+
+                } else if((endPosition - startPosition) > 0){
+                    setMovement({
+                        ...movement,
+                        traslatePosition: (traslatePosition + refDivItemWidth.current.clientWidth + 12)
+                    })
+
+                }
+
             }
-            else if ((endPosition - startPosition) < 0){
-                setMovement({
-                    ...movement,
-                    traslatePosition: (traslatePosition - refDivItemWidth.current.clientWidth - 12)
-                })
 
-            } else if((endPosition - startPosition) > 0){
-                setMovement({
-                    ...movement,
-                    traslatePosition: (traslatePosition + refDivItemWidth.current.clientWidth + 12)
-                })
-
-            }
+            
         }, [endPosition])
 
         useEffect(() => {
             mainRuling.style.transform = `translate(${traslatePosition}px, 0)`;
             
         }, [traslatePosition])
-        
+       
     
     return (
         <>
             <div 
+                id={`main_ruling-item-${view}`}
                 className="main__previous-rulings-item ruling-item"
                 ref={ refDivItemWidth }
                 onTouchStart={ handleTouchStart }
                 onTouchEnd={ handleTouchEnd }
-                onDragStart={ handleTouchStart }
-                onDragEnd={ handleTouchEnd }
                 >
                     <RullingItemDesign
                         id={id}
@@ -94,6 +100,7 @@ const RulingItems = ({
                         picture={picture}
                         lastUpdated={lastUpdated}
                         votes={votes}
+                        view={view}
                     />
             </div>
             

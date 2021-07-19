@@ -11,7 +11,8 @@ export const RullingItemDesign = ({
     category,
     picture,
     lastUpdated,
-    votes
+    votes,
+    view
 }) => {
     
     const lastUpdateConverted = handleDate(lastUpdated);
@@ -20,62 +21,73 @@ export const RullingItemDesign = ({
   
     return (
         <div 
+            id={`main__ruling-item-design-${view}`}
             className="main__ruling-item-design"
             >
-                <div className="row">
-                    <h2 className="main_name-of-famous">{ 
+                <div className="">
+                    <h2 
+                        id={`main_name-of-famous-${view}`}
+                        className="main_name-of-famous">{ 
                         name.length > 21
                         ?
-                        name.substring(0,21) + "..."
+                        name.substring(0,18) + "..."
                         :
                         name
                         }
                     </h2>
                     
-                    <div className={ true ? "main__button-container main__thums-up" : "main__button-container main__thums-down"}>
+                    <div
+                        id={`main__button-container-${view}`} 
+                        className={ votes.positive > votes.negative ? "main__button-container main__thums-up" : "main__button-container main__thums-down"}>
                         {
-                            true 
+                            votes.positive > votes.negative 
                             ?
-                            <button className="icon-button" aria-label="thumbs up">
+                            <div className="icon-button" aria-label="thumbs up">
                                     <img className="main__thumbs-svg" src="assets/img/thumbs-up.svg" alt="thumbs up" />
-                            </button>
+                            </div>
                             :
-                            <button className="icon-button" aria-label="thumbs down">
+                            <div className="icon-button" aria-label="thumbs down">
                                     <img className="main__thumbs-svg" src="assets/img/thumbs-down.svg" alt="thumbs down" />
-                            </button>
+                            </div>
                         }
                     </div>
-                    <div className="main__description">{ 
-                        description.length > 56
-                        ?
-                        description.substring(0,56) + "..."
-                        :
-                        description
-                        }
-                    </div>
-                    <div className="main__update-and-category">
-                    {
-                            voted === "first"
-                            ?
-                            lastUpdateConverted + " ago in " + category.charAt(0).toUpperCase() + category.slice(1)
-                            :
-                            "Thank you for your vote!" 
-                        }
-                    </div>
-
-                    <CurrentVote 
-                    id={id} 
-                    idFire={idFire}
-                    voted ={voted}
-                    setVoted={setVoted} />
-                    
-
-                    <Votes votes={ votes } />
-                    
-
                 </div>
+                <div
+                    id={`main__description-${view}`} 
+                    className="main__description">{ 
+                    description.length > 56
+                    ?
+                    description.substring(0,56) + "..."
+                    :
+                    description
+                    }
+                </div>
+                <div
+                    id={`main__update-and-category-${view}`}
+                    className="main__update-and-category">
+                {
+                        voted === "first"
+                        ?
+                        lastUpdateConverted + " ago in " + category.charAt(0).toUpperCase() + category.slice(1)
+                        :
+                        "Thank you for your vote!" 
+                    }
+                </div>
+
+                <CurrentVote 
+                id={id} 
+                idFire={idFire}
+                voted ={voted}
+                setVoted={setVoted}
+                view={view} />
+                    
+
+                <Votes 
+                    votes={ votes }
+                    view={view} />
+                    
                 
-            <img src={ `./assets/img/${ picture }` } className="famous-img" alt={ name }/>
+            <img src={ `./assets/img/${ picture }` } id={`famous-img-${view}`} className="famous-img" alt={ name }/>
 
         </div>
     )

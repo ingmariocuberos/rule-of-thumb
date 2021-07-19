@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from './UserContext';
 
-export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
+export const CurrentVote = ( {id, idFire, name, voted, setVoted, view} ) => {
 
     const userContext = useContext(UserContext);
 
@@ -23,7 +23,6 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
 
 
     const voteAction = () =>{
-        console.log(voted)
         if(voted === "first"){
             positiveVote.current.style.visibility = "hidden";
             negativeVote.current.style.visibility = "hidden";
@@ -36,7 +35,7 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
             positiveVote.current.style.visibility = "visible";
             negativeVote.current.style.visibility = "visible";
             setVoted("first");
-            setVote(0)
+            setVote("")
             positiveVote.current.style.border ="0px solid #fff";
             negativeVote.current.style.border ="0px solid #fff";
         }
@@ -56,11 +55,13 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
 
     return (
         <>
-            <div>
-                <div className="main__selection-button-thumbs-up"
-                ref={ positiveVote }
+            <div id={`main__container-votes-${view}`}>
+                <div
+                    id={`main__selection-button-thumbs-up-${view}`}
+                    className="main__selection-button-thumbs-up"
+                    ref={ positiveVote }
                 >
-                    <button className="icon-button " aria-label="thumbs up"                    
+                    <button className="icon-button" aria-label="thumbs up"                    
                     onClick={ handleVote }>
                             <img className="main__thumbs-svg" src="assets/img/thumbs-up.svg" 
                             alt="thumbs up"
@@ -69,8 +70,10 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
                     </button>
                 </div>
 
-                <div className="main__selection-button-thumbs-down"
-                ref={ negativeVote }
+                <div
+                    id={`main__selection-button-thumbs-down-${view}`}
+                    className="main__selection-button-thumbs-down"
+                    ref={ negativeVote }
                 >                    
                     <button className="icon-button" aria-label="thumbs down"
                     name="negative"
