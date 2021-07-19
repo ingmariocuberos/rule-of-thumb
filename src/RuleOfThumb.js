@@ -17,9 +17,9 @@ export const RuleOfThumb = () => {
     useEffect(() => {
         dataRef.onSnapshot(snapshot => {
             snapshot.forEach( snapChild =>{
-                database.push( snapChild.data().data)
+                database.push( snapChild.data())
             })
-            setData(database[0]);
+            setData(database);
         })
     }, [])
 

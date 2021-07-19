@@ -21,8 +21,10 @@
   position: relative;
   display: flex;
   justify-content: center;
-  height: 300px;
-  width: 300px;
+  height: 80vw;
+  width: 80vw;
+  max-width: 300px;
+  max-height: 300px;
   margin-left: 1rem;
   padding: 0;
 }
@@ -91,8 +93,8 @@
   height: 2.8rem;
   position: absolute;
   font-size: 12px;
-  top: 214px;
-  left: 80px;
+  top: 75%;
+  left: 35%;
   background-color: $green-positive;
 }
 
@@ -103,8 +105,8 @@
   height: 2.8rem;
   position: absolute;
   font-size: 12px;
-  top: 214px;
-  left: 130px;
+  top: 75%;
+  left: 50%;
   background-color: $yellow-negative;
 }
 
@@ -117,8 +119,8 @@
   background-color: transparentize($darker-gray, 0.2);
   color: $white;
   font-size: 16px;
-  top: 214px;
-  left: 180px;
+  top: 75%;
+  left: 65%;
 }
 
 .main__container-votes {
@@ -129,7 +131,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   // justify-content: space-between;
-  top: calc(300px - 2.8rem);
+  top: calc(80vw - 2.8rem);
   left: 0%;
   padding: 0;
 }
@@ -149,6 +151,7 @@
 }
 
 .main__positive-percentaje {
+  position: absolute;
   display: flex;
   padding-top: 0.3rem;
   padding-left: 1rem;
@@ -178,33 +181,4 @@
 
 .main__thumbs-down-icon {
   padding-top: 4px;
-}
-
-.main_container-previous-rulings {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
-.main__select {
-  visibility: hidden;
-  border: 2px solid #111;
-  width: 170px;
-  height: 35px;
-  text-align-last: center;
-}
-.option {
-  border: 2px solid #111;
-  text-align-last: center;
-}
-
-.option:hover {
-  background-color: transparentize($darker-gray, 0.4) !important;
-}
-
-@media all and (min-width: 768px) {
-  .main__select {
-    visibility: visible;
-  }
 }

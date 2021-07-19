@@ -19,18 +19,27 @@ export const PreviousResults = () => {
         <>
             <main role="main">
 
-                <h2 className="main__title-previous-rulings">Previous Rulings</h2>
+                <div className="main_container-previous-rulings">                   
+                    <h2 className="main__title-previous-rulings">Previous Rulings</h2>
+                    <select className="main__select custom-select" name="select">
+                        <option className="option" value="list" selected>List</option>
+                        <option className="option" value="grid">Grid</option>
+                    </select>
+
+                </div>
 
                 <div className="main_ruling-container">
 
                 {
                     data.map(person=>{
                         
-                        const {name, description, category, picture, lastUpdated, votes} = person;   
+                        const {id, ide, name, description, category, picture, lastUpdated, votes} = person;   
 
                         return (
                             <RulingItems
                                 key={name}
+                                id={id}
+                                idFire={ide}
                                 mainRuling={mainRuling}
                                 name={name}
                                 description={description}

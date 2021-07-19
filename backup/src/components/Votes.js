@@ -22,7 +22,10 @@ const Votes = ( { votes } ) => {
         if(refPositive !== null){
             refPositive.current.style.width = `${positivePercentaje}%`;
             refNegative.current.style.width = `${negativePercentaje}%`;
-            
+            // setWidthOpinion({
+            //     positive: refPositive.current.clientWidth,
+            //     negative: refNegative.current.clientWidth
+            // })
         }
                 
     }, [refPositive, positivePercentaje, negativePercentaje])

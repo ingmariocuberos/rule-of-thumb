@@ -7,7 +7,7 @@ import { RullingItemDesign } from './RullingItemDesign';
 const RulingItems = ({
     id,
     idFire,
-    mainRuling,
+    mainRuling,    
     name, 
     description, 
     category, 
@@ -18,6 +18,8 @@ const RulingItems = ({
     movement,
     setMovement
     }) => {
+
+        console.log("hola");
 
         const {startPosition,traslatePosition,endPosition} = movement;
         const refDivItemWidth = useRef(290)
@@ -72,7 +74,9 @@ const RulingItems = ({
         useEffect(() => {
             mainRuling.style.transform = `translate(${traslatePosition}px, 0)`;
             
-        }, [traslatePosition])
+        }, [traslatePosition]);
+
+        
         
     
     return (
@@ -82,12 +86,10 @@ const RulingItems = ({
                 ref={ refDivItemWidth }
                 onTouchStart={ handleTouchStart }
                 onTouchEnd={ handleTouchEnd }
-                onDragStart={ handleTouchStart }
-                onDragEnd={ handleTouchEnd }
                 >
                     <RullingItemDesign
                         id={id}
-                        idFire={idFire} 
+                        idFire={idFire}
                         name={name}
                         description={description}
                         category={category}

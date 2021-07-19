@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import db from '../firebase/firebasedb';
 import { UserContext } from './UserContext';
 
-export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
+
+
+export const CurrentVote = ( { id, idFire, name, voted, setVoted } ) => {
 
     const userContext = useContext(UserContext);
 
@@ -23,13 +26,11 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
 
 
     const voteAction = () =>{
-        console.log(voted)
         if(voted === "first"){
             positiveVote.current.style.visibility = "hidden";
             negativeVote.current.style.visibility = "hidden";
             setVoted("again");
-
-            userContext.data[idFire].votes[vote] = userContext.data[idFire].votes[vote] + 1;
+            userContext.data[id].votes[vote] = userContext.data[id].votes[vote] + 1;
             // db.collection('data').doc(idFire).update(userContext.data[id]);
 
         } else if(voted === "again"){
@@ -53,7 +54,6 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted} ) => {
             negativeVote.current.style.border ="2px solid #fff";
         }
     }, [vote])
-
     return (
         <>
             <div>

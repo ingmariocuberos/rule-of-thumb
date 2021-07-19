@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { CurrentVote } from './CurrentVote';
 import { handleDate } from "./helpers/handleDates";
 import Votes from './Votes';
@@ -15,8 +15,7 @@ export const RullingItemDesign = ({
 }) => {
     
     const lastUpdateConverted = handleDate(lastUpdated);
-
-    const [voted, setVoted] = useState("first")
+    const [voted, setVoted] = useState("first");   
   
     return (
         <div 
@@ -54,7 +53,7 @@ export const RullingItemDesign = ({
                         }
                     </div>
                     <div className="main__update-and-category">
-                    {
+                        {
                             voted === "first"
                             ?
                             lastUpdateConverted + " ago in " + category.charAt(0).toUpperCase() + category.slice(1)
@@ -62,12 +61,8 @@ export const RullingItemDesign = ({
                             "Thank you for your vote!" 
                         }
                     </div>
-
-                    <CurrentVote 
-                    id={id} 
-                    idFire={idFire}
-                    voted ={voted}
-                    setVoted={setVoted} />
+                    
+                    <CurrentVote id={ id } idFire={idFire} name={ name } voted={ voted } setVoted={ setVoted } />
                     
 
                     <Votes votes={ votes } />
