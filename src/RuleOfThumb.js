@@ -23,29 +23,24 @@ export const RuleOfThumb = () => {
         })
     }, [])
 
-    
-
-    // useEffect(() => {
+    // if(localStorage.getItem("data") === null){
     //     fetch('./assets/data.json')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setData(data.data);
-    //         });
-    // }, [])
-
-    
-
-    const [user, setUser] = useState({});
-
+    //     .then(res => res.json())
+    //     .then(data => {
+            
+    //         setData(data.data);
+    //         localStorage.setItem("data",JSON.stringify(data.data))
+    //     });
+    // } else {
+    //     setData(JSON.parse(localStorage.getItem("data")));
+    // }
 
     return (
         <UserContext.Provider 
             value={ 
                 {
-                    user,
-                    setUser,
                     data,
-                    setData
+                    setData,
                 }
             }
         >

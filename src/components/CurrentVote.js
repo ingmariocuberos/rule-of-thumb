@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+// import db from '../firebase/firebasedb';
 import { UserContext } from './UserContext';
 
 export const CurrentVote = ( {id, idFire, name, voted, setVoted, view} ) => {
 
-    const userContext = useContext(UserContext);
+    const { data } = useContext(UserContext);
 
     const positiveVote = useRef(null);
     const negativeVote = useRef(null);
@@ -28,8 +29,9 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted, view} ) => {
             negativeVote.current.style.visibility = "hidden";
             setVoted("again");
 
-            userContext.data[idFire].votes[vote] = userContext.data[idFire].votes[vote] + 1;
-            // db.collection('data').doc(idFire).update(userContext.data[id]);
+            data[idFire].votes[vote] = data[idFire].votes[vote] + 1;
+            // localStorage.setItem("data",JSON.stringify(data.data))
+            // db.collection('data').doc(id).update(userContext.data[idFire]);
 
         } else if(voted === "again"){
             positiveVote.current.style.visibility = "visible";
