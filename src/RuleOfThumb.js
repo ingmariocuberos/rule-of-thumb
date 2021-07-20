@@ -5,35 +5,27 @@ import "firebase/firestore";
 import { UserContext } from './components/UserContext';
 import './firebase/firebasedb';
 import db from "./firebase/firebasedb"
+import { info } from './assets/info';
 
 export const RuleOfThumb = () => {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(info.data);
 
-    const dataRef = db.collection('data')
+    const dataRef = db.collection('data');
 
     const database : any[] = [];
 
     useEffect(() => {
-        dataRef.onSnapshot(snapshot => {
+        dataRef.get().then(snapshot => {
             snapshot.forEach( snapChild =>{
-                database.push( snapChild.data())
-            })
-            setData(database);
+                database.push({
+                    id: snapChild.id,
+                    ...snapChild.data()
+                })                
+            }) 
+            setData(database);   
         })
-    }, [])
-
-    // if(localStorage.getItem("data") === null){
-    //     fetch('./assets/data.json')
-    //     .then(res => res.json())
-    //     .then(data => {
-            
-    //         setData(data.data);
-    //         localStorage.setItem("data",JSON.stringify(data.data))
-    //     });
-    // } else {
-    //     setData(JSON.parse(localStorage.getItem("data")));
-    // }
+    }, []);
 
     return (
         <UserContext.Provider 
