@@ -30,8 +30,7 @@ export const CurrentVote = ( {id, idFire, name, voted, setVoted, view} ) => {
             setVoted("again");
 
             data[idFire].votes[vote] = data[idFire].votes[vote] + 1;
-            // localStorage.setItem("data",JSON.stringify(data.data))
-            // db.collection('data').doc(id).update(userContext.data[idFire]);
+            db.collection('data').doc(id).update(data[idFire]);
 
         } else if(voted === "again"){
             positiveVote.current.style.visibility = "visible";
