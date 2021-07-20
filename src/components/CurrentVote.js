@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-// import db from '../firebase/firebasedb';
+import db from '../firebase/firebasedb';
 import { UserContext } from './UserContext';
 
 export const CurrentVote = ( {id, idFire, name, voted, setVoted, view} ) => {
