@@ -35,7 +35,7 @@ export const info = {
         },
         {
             "name": "Malala Yousafzai",
-            "description": "The daughter of educational activist Ziauddin, Yousafzai was born to a Pashtun family in Mingora, Khyber Pakhtunkhwa, Pakistan. Her family came to run a chain of schools in the region.",
+            "description": "The daughter of educational activist Ziauddin, Yousafzai was born to a Pashtun family in Mingora, Khyber Pakhtunkhwa, Pakistan. Her family came to run a chain of schools in the region",
             "category": "politics",
             "picture": "malala",
             "lastUpdated": "2020-12-10T23:41:07.120Z",
