@@ -6,13 +6,15 @@ export const PreviousResults = () => {
 
     const {data} = useContext(UserContext);
 
-    const [weightValue, setWeightValue] = useState(300);
-
     const [view, setView] = useState("grid")
 
     const handleChange = ({target}) =>{
         setView(target.value)
     }
+
+    const refPreviousRulings = useRef(null);
+
+    const [weightValue, setWeightValue] = useState(300);
 
     const [movement, setMovement] = useState({
         startPosition:0,
@@ -21,20 +23,20 @@ export const PreviousResults = () => {
         divWeight: 290
     });
 
-    const rulingContainer = useRef(null)
-
     useEffect(() => {
-        setWeightValue(rulingContainer.current.clientWidth)
-    }, [rulingContainer])
+        setWeightValue(refPreviousRulings.current.clientWidth)
+    }, [movement])
 
-    const mainRuling = document.querySelector(".main_ruling-container");
+    const rulingContainer = useRef(null)
 
     return (
         <>
             <main role="main">
 
-                <div className="main_container-previous-rulings">                   
-                    <h2 className="main__title-previous-rulings">Previous Rulings</h2>
+                <div className="main_container-previous-rulings"
+                ref={ refPreviousRulings }>                   
+                    <h2 className="main__title-previous-rulings"                    
+                    >Previous Rulings</h2>
                     <select 
                         className="main__select custom-select" 
                         name="select"
@@ -62,14 +64,14 @@ export const PreviousResults = () => {
                                 key={name}
                                 id={id}
                                 idFire={ide}
-                                weightValue={weightValue}
-                                mainRuling={mainRuling}
+                                rulingContainer={rulingContainer}
                                 name={name}
                                 description={description}
                                 category={category}
                                 picture={picture}
                                 lastUpdated={lastUpdated}
                                 votes={votes}
+                                weightValue={weightValue}
                                 dataLength={data.length}
                                 movement={movement}
                                 setMovement={setMovement}
