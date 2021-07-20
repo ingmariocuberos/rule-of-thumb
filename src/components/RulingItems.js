@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'firebase/firestore';
 import PropTypes from 'prop-types'
 import { RullingItemDesign } from './RullingItemDesign';
@@ -7,14 +7,14 @@ import { RullingItemDesign } from './RullingItemDesign';
 const RulingItems = ({
     id,
     idFire,
-    mainRuling,
-    weightValue,
+    rulingContainer,
     name, 
     description, 
     category, 
     picture, 
     lastUpdated, 
     votes,
+    weightValue,
     dataLength,
     movement,
     setMovement,
@@ -22,7 +22,7 @@ const RulingItems = ({
     }) => {
 
         const {startPosition,traslatePosition,endPosition} = movement;
-        const refDivItemWidth = useRef(290)
+        const refDivItemWidth = useRef(290);
 
         const handleTouchStart = (e) =>{
             
@@ -43,7 +43,7 @@ const RulingItems = ({
 
         useEffect(() => {
 
-            if(weightValue < 765){
+            if(weightValue < 510){
                 const realMovement = (traslatePosition + (endPosition - startPosition));
 
                 if (realMovement > 0){
@@ -72,14 +72,13 @@ const RulingItems = ({
                 }
 
             }
-
             
-        }, [endPosition])
+        }, [endPosition]);
 
         useEffect(() => {
-            mainRuling.style.transform = `translate(${traslatePosition}px, 0)`;
+            rulingContainer.current.style.transform = `translate(${traslatePosition}px, 0)`;
             
-        }, [traslatePosition])
+        }, [movement])
        
     
     return (
